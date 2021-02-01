@@ -8,15 +8,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgresql://postgres:post
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+import models
 
 
-@app.route("/")
-def home():
-    return '''My name is Peace Obasi-Kalu. This is my CA2 work.
- My GitHub URL is https://github.com/PeaceObasi'''
-    # In the return statement above, Use your own name and GitHub URL
-
-@app.route("/")
+@app.route("/home")
 def hello():
     return render_template('home.html', title="Home")
 
@@ -141,6 +136,12 @@ def logout():
 def page_not_found(error):
     return render_template('page-not-found.html'), 404
 
+
+@app.route("/")
+def home():
+    return '''My name is Peace Obasi-Kalu. This is my CA2 work.
+ My GitHub URL is https://github.com/PeaceObasi'''
+    # In the return statement above, Use your own name and GitHub URL
 
 if __name__ == "__main__":
     app.run(port=5005)
